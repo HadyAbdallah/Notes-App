@@ -5,7 +5,6 @@ import 'package:notes/Models/NoteModel.dart';
 import 'package:notes/SimpleBlocObserver.dart';
 import 'package:notes/Views/NotesView.dart';
 import 'package:notes/constants.dart';
-import 'package:notes/cubits/AddNoteCubit/add_note_cubit.dart';
 
 import 'Views/EditNoteView.dart';
 
