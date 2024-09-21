@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/Models/NoteModel.dart';
 import 'package:notes/Widgets/CustomAppBar.dart';
 import 'package:notes/Widgets/CustomTextField.dart';
+import 'package:notes/Widgets/EditColorListView.dart';
 import 'package:notes/cubits/NotesCubit/notes_cubit.dart';
 
 class EditNoteViewBody extends StatefulWidget {
@@ -56,6 +57,10 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             hint: "Content",
             maxlines: 5,
           ),
+          const SizedBox(
+            height: 16,
+          ),
+          EditColorsListView(note: widget.note),
         ],
       ),
     );
