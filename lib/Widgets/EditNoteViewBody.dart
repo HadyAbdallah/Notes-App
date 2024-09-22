@@ -4,6 +4,7 @@ import 'package:notes/Models/NoteModel.dart';
 import 'package:notes/Widgets/CustomAppBar.dart';
 import 'package:notes/Widgets/CustomTextField.dart';
 import 'package:notes/Widgets/EditColorListView.dart';
+import 'package:notes/Widgets/ShowSnakBar.dart';
 import 'package:notes/cubits/NotesCubit/notes_cubit.dart';
 
 class EditNoteViewBody extends StatefulWidget {
@@ -31,6 +32,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               widget.note.contant = contant ?? widget.note.contant;
               widget.note.save();
               BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+              ShowSnakBar(context, "The note was Updated successfully");
               Navigator.pop(context);
             },
             title: 'Edit Note',

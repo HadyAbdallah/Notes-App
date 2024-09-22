@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/Widgets/NoNotesBody.dart';
 import 'package:notes/Widgets/NoteItem.dart';
 import 'package:notes/cubits/NotesCubit/notes_cubit.dart';
 
@@ -25,9 +26,7 @@ class NotesListView extends StatelessWidget {
                 }),
           ));
         } else if (state is NotesFailure) {
-          return Center(
-            child: Text(state.message),
-          );
+          return const NoNotesBody();
         } else {
           return const CircularProgressIndicator();
         }

@@ -4,6 +4,7 @@ import 'package:notes/Models/NoteModel.dart';
 import 'package:notes/Widgets/ColorsListView.dart';
 import 'package:notes/Widgets/CustomButton.dart';
 import 'package:notes/Widgets/CustomTextField.dart';
+import 'package:notes/Widgets/ShowSnakBar.dart';
 import 'package:notes/cubits/AddNoteCubit/add_note_cubit.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -65,6 +66,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                         date: DateTime.now().toString().substring(0, 16),
                         color: Colors.blue.value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                    ShowSnakBar(context, "The note was added successfully");
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});
