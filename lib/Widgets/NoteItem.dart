@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/Models/NoteModel.dart';
 import 'package:notes/Views/EditNoteView.dart';
 import 'package:notes/Widgets/ShowSnakBar.dart';
+import 'package:notes/constants.dart';
 import 'package:notes/cubits/NotesCubit/notes_cubit.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class NoteItme extends StatelessWidget {
   const NoteItme({super.key, required this.note});
@@ -34,9 +36,7 @@ class NoteItme extends StatelessWidget {
               ),
               trailing: IconButton(
                 onPressed: () {
-                  note.delete();
-                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                  ShowSnakBar(context, "Note was deleted");
+                  deleteAlert(context, note);
                 },
                 icon: const Icon(
                   Icons.delete,
@@ -56,4 +56,30 @@ class NoteItme extends StatelessWidget {
       ),
     );
   }
+}
+
+void deleteAlert(context, NoteModel note) {
+  Alert(
+    context: context,
+    type: AlertType.warning,
+    style: const AlertStyle(
+      titleStyle: TextStyle(color: Colors.white),
+    ),
+    title: "Are you sure you want to delete this note?",
+    buttons: [
+      DialogButton(
+        color: kPrimaryColor,
+        onPressed: () {
+          note.delete();
+          BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+          Navigator.pop(context);
+        },
+        width: 120,
+        child: const Text(
+          "Delete",
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+      )
+    ],
+  ).show();
 }
